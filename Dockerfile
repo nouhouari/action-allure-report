@@ -1,15 +1,16 @@
 FROM openjdk:8-jre-alpine
 LABEL maintainer="andrea.fiore@lenses.io"
+LABEL maintainer="houarinourredine@gmail.com"
 
-ARG RELEASE=2.13.2
-ARG ALLURE_REPO=https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline
+ARG RELEASE=2.17.2
+ARG ALLURE_REPO=https://github.com/allure-framework/allure2/releases/download/${RELEASE}/allure-${RELEASE}
 
-RUN apk update 
+RUN apk update
 RUN apk add bash 
 RUN apk add wget 
 RUN apk add unzip 
 
-RUN wget --no-verbose -O /tmp/allure-$RELEASE.zip $ALLURE_REPO/$RELEASE/allure-commandline-$RELEASE.zip \
+RUN wget --no-verbose -O /tmp/allure-$RELEASE.zip $ALLURE_REPO.zip \
   && unzip /tmp/allure-$RELEASE.zip -d / \
   && rm -rf /tmp/*
 
